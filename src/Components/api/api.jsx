@@ -29,4 +29,3 @@ export const getLocationInfo = async (sw, ne) => {
     console.log(e);
   }
 };
-//hiiii
