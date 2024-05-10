@@ -8,6 +8,7 @@ import Suggestion from "./Suggestion";
 
 import { getLocationInfo } from "./api/api";
 import DialogflowMessenger from "./Chatbot1";
+import ChatbaseChatbot from "./Chatbot1";
 
 export default function Screen() {
   const [places, setPlaces] = useState();
@@ -115,7 +116,7 @@ export default function Screen() {
               </Card.Body>
             </Card>
             <div class="fixed bottom-0 right-0 mb-4 mr-4">
-              <DialogflowMessenger />
+              <ChatbaseChatbot />
             </div>
           </div>
         </div>

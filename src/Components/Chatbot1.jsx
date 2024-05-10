@@ -1,44 +1,36 @@
 import React, { useEffect } from "react";
 
-const DialogflowMessenger = () => {
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src =
-      "https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js";
-    script.async = true;
-    document.body.appendChild(script);
+const ChatbaseChatbot = () => {
+    useEffect(() => {
+        // Load Chatbase embed script dynamically
+        const script = document.createElement("script");
+        script.src = "https://www.chatbase.co/embed.min.js";
+        script.defer = true;
+        script.async = true;
+        script.onload = () => {
+            // Once the script is loaded, configure the chatbot
+            window.embeddedChatbotConfig = {
+                chatbotId: "jvSy5ptbPYUJydImChQml",
+                domain: "www.chatbase.co"
+            };
+        };
+        document.body.appendChild(script);
 
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
+        // Clean up function to remove the script when the component unmounts
+        return () => {
+            document.body.removeChild(script);
+        };
+    }, []);
 
-  return (
-    <div>
-      <link
-        rel="stylesheet"
-        href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css"
-      />
-      <df-messenger
-        project-id="tavller"
-        agent-id="35cf6612-dec8-41d8-ad33-09dd3af2fb0c"
-        language-code="en"
-        max-query-length="-1"
-      >
-        <df-messenger-chat-bubble chat-title="Jagath"></df-messenger-chat-bubble>
-      </df-messenger>
-      <style>
-        {`
-          df-messenger {
-            z-index: 999;
-            position: fixed;
-            bottom: 16px;
-            right: 16px;
-          }
-        `}
-      </style>
-    </div>
-  );
+    return (
+        <iframe
+            src="https://www.chatbase.co/chatbot-iframe/jvSy5ptbPYUJydImChQml"
+            title="Chatbot"
+            width="100%"
+            style={{ height: "100%", minHeight: "700px" }}
+            frameBorder="0"
+        ></iframe>
+    );
 };
 
-export default DialogflowMessenger;
+export default ChatbaseChatbot;
